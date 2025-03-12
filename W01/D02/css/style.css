@@ -1,0 +1,107 @@
+:root {
+    --accent-color: #7800ce;
+    --bkg-color: #e1e0e0;
+    --delete-color: #c30000;
+}
+
+body {
+    background: linear-gradient(135deg, rgba(0,213,204,1) 0%, rgba(0,173,208,1) 100%);
+}
+
+main {
+    width: 100dvw;
+    height: 100dvh;
+}
+
+.todo-container {
+    background-color: #ffffff;
+    border-radius: 0.4rem;
+    width: 40%;
+}
+
+#new-todo {
+    outline: 1px solid var(--bkg-color);
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.7rem;
+}
+
+.add-new-btn {
+    border: none;
+    background-color: var(--accent-color);
+    border-radius: 0.4rem;
+    transition: all 0.4s ease-out;
+}
+
+.add-new-btn i {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: bold;
+    transition: all 0.4s ease-out;
+}
+
+.add-new-btn:hover {
+    border: 1px solid var(--accent-color);
+    background-color: #ffffff;
+}
+
+.add-new-btn:hover i {
+    color: var(--accent-color);
+}
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    border-radius: 0.4rem;
+    background-color: var(--bkg-color);
+    overflow: hidden;
+}
+
+.item-delete-btn {
+    border: none;
+    background-color: var(--delete-color);
+    transform: translateX(100%);
+    transition: all 0.4s ease-out;
+}
+
+.item-delete-btn i {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.item-delete-btn:hover {
+    border: 1px solid var(--delete-color);
+    background-color: transparent;
+}
+
+.item-delete-btn:hover i {
+    color: var(--delete-color);
+}
+
+.todo-item:hover .item-delete-btn {
+    transform: translateX(0);
+}
+
+.todo-clear-btn {
+    border: none;
+    background-color: var(--accent-color);
+    border-radius: 0.3rem;
+    padding: 0.4rem 1rem;
+    color: #ffffff;
+    transition: all 0.4s ease-out;
+}
+
+.todo-clear-btn:hover {
+    border: 1px solid var(--accent-color);
+    background-color: #ffffff;
+    color: var(--accent-color);
+}
