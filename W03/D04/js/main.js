@@ -13,23 +13,25 @@ const getUsersData = async () => {
     return users
 }
 
-const generateTableBody = (user) => {
+const fetchResults = (user) => {
     const { id, name, username, email, website } = user
-    const userData = [id, name, username, email, website];
 
     const result = {
         id: id,
-        name: name.toLowerCase(),
-        username: username.toLowerCase(),
-        email: email.toLowerCase(),
-        website: website.toLowerCase()
+        name: name,
+        username: username,
+        email: email,
+        website: website
     }
 
     usersResults.push(result);
+}
 
+const generateTableBody = (user) => {
+    const { id, name, username, email, website } = user;
     const tableRow = document.createElement('tr');
 
-    userData.map((data) => {
+    [ id, name, username, email, website ].map((data) => {
         const td = document.createElement('td');
         td.textContent = data;
         tableRow.appendChild(td);
@@ -39,9 +41,12 @@ const generateTableBody = (user) => {
 }
 
 getUsersData()
-    .then(users => users.map(user => {
-        generateTableBody(user)
-    }));
+    .then(users => {
+        users.map(user => {
+            generateTableBody(user);
+            fetchResults(user)
+        }
+    )});
 
 formInput.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -51,7 +56,7 @@ formInput.addEventListener('submit', (event) => {
     if (isFieldValid && isTextValid) {
         const field = searchField.value;
         const text = searchText.value.trim().toLowerCase()
-        const filteredUsers = usersResults.filter(user => user[field].includes(text))
+        const filteredUsers = usersResults.filter(user => user[field].toLowerCase().includes(text))
         tableBodyContainer.innerHTML = '';
         filteredUsers.forEach(user => generateTableBody(user))
     }
