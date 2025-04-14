@@ -53,14 +53,18 @@ const eventHandler = (e) => {
         const id = isBtn.getAttribute('data-product-id');
         const title = action.slice(0, 1).toUpperCase() + action.slice(1, action.length);
 
+        
+
         switch (action) {
             case 'create':
                 formModal.form.reset();
                 formFieldsValidation(formModal);
                 openModal(formModal, title);
-
-                formModal.form.addEventListener('submit', async (e) => {
+                
+                const submitForm = async (e) => {
                     e.preventDefault();
+
+                    formModal.form.removeEventListener('submit', submitForm);
 
                     await createProduct(formSubmit(formModal.form))
                         .then(res => notificationSuccess(action))
@@ -75,8 +79,10 @@ const eventHandler = (e) => {
                             products.body.innerHTML = '';
                             productsList.forEach(product => renderTableRows(product, products.body));
                         });
-                });
-                break;
+                };
+                        
+            formModal.form.addEventListener('submit', submitForm);
+            break;
 
             case 'edit':
                 getProductById(id)
