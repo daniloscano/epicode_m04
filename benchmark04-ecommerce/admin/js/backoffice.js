@@ -61,10 +61,10 @@ const eventHandler = (e) => {
                 formFieldsValidation(formModal);
                 openModal(formModal, title);
                 
-                const submitForm = async (e) => {
+                const submitCreate = async (e) => {
                     e.preventDefault();
 
-                    formModal.form.removeEventListener('submit', submitForm);
+                    formModal.form.removeEventListener('submit', submitCreate);
 
                     await createProduct(formSubmit(formModal.form))
                         .then(res => notificationSuccess(action))
@@ -81,7 +81,7 @@ const eventHandler = (e) => {
                         });
                 };
                         
-            formModal.form.addEventListener('submit', submitForm);
+            formModal.form.addEventListener('submit', submitCreate);
             break;
 
             case 'edit':
@@ -93,8 +93,10 @@ const eventHandler = (e) => {
                     })
                     .catch(error => notificationError(error.message));
 
-                formModal.form.addEventListener('submit', async (e) => {
+                const submitEdit = async (e) => {
                 e.preventDefault();
+
+                formModal.form.removeEventListener('submit', submitEdit);
 
                     await updateProduct(id, formSubmit(formModal.form))
                         .then(res => notificationSuccess(action))
@@ -109,8 +111,10 @@ const eventHandler = (e) => {
                             products.body.innerHTML = '';
                             productsList.forEach(product => renderTableRows(product, products.body));
                         });
-                });
-                break;
+                };
+
+            formModal.form.addEventListener('submit', submitEdit);
+            break;
 
             case 'delete':
                 const deleteFunction = async () => {
