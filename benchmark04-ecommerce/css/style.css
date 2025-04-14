@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+:root {
+    --primary: #1A2530;
+    --background: #F9FAFB;
+    --content: #FFFFFF;
+    --accent: #F5A623;
+    --text: #000000;
+    --detail: #2563EB;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    color: var(--text);
+    background-color: var(--background);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    background-color: var(--primary);
+}
+
+.nav-title {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--content);
+    font-size: 1.6em;
+}
+
+.nav-link {
+    color: var(--content);
+    position: relative;
+    transition: all 0.2s linear;
+}
+
+.nav-link:hover {
+    color: var(--content);
+    font-weight: 600;
+    transform: scale(1.05);
+}
+
+.btn {
+    font-family: 'Roboto', sans-serif;
+}
+
+.cart-btn, .add-to-cart-btn {
+    background-color: var(--accent);
+    border: none;
+    outline: none;
+    color: var(--primary);
+}
+
+.cart-btn:hover {
+    background-color: var(--primary);
+    outline: solid 1px var(--accent);
+    color: var(--accent);
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--background);
+    outline: solid 1px var(--accent);
+    color: var(--accent);
+}
+
+.backoffice-btn {
+    border: none;
+    outline: solid 1px var(--content);
+    color: var(--content);
+}
+
+.backoffice-btn:hover {
+    background-color: var(--content);
+    color: var(--primary);
+}
+
+.bi-list {
+    font-size: 36px;
+    color: var(--content);
+}
+
+.mobile-menu {
+    background-color: var(--primary);
+}
+
+#offcanvas-close {
+    color: var(--content) !important;
+}
+
+.alert-success {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#modal-cart {
+    background-color: rgba(26, 37, 48, 0.85);
+}
+
+.delete-btn:hover {
+    background-color: var(--background);
+    outline: solid 1px red;
+    color: red;
+}
+
+.product-card {
+    overflow: hidden;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 5px 5px #E5E5E5;
+    -moz-box-shadow: 0px 0px 5px 5px #E5E5E5;
+    box-shadow: 0px 0px 5px 5px #E5E5E5;
+    cursor: pointer;
+}
+
+.product-image {
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+
+.product-name {
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5em;
+    min-height: 3em;
+}
+
+.product-price {
+    font-weight: 600;
+}
+
+.loader {
+    width: 50px;
+    margin: 4rem auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: 
+        radial-gradient(farthest-side,#ffa516 94%,#0000) top/8px 8px no-repeat,
+        conic-gradient(#0000 30%,#ffa516);
+    mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+    animation: loader 1s infinite linear;
+}
+
+@keyframes loader { 
+    100%{transform: rotate(1turn)}
+}
+
+.modal-dialog {
+    min-width: 70%;
+}
